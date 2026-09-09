@@ -84,15 +84,12 @@ for.
    have this branch on their fork. That's intended: Mission 02 has them
    add `upstream` as a remote and fetch it, which is the point.
 
-3. **Decide whether to wire up Mission 03 (SSH) for real.** If you have
-   a course server that can print a per-user token to anyone who
-   connects, set `QUEST_SSH_HOST` (and `QUEST_SSH_USER` if needed) in
-   `missions/03-ssh/server.env` on the upstream repo *before* students
-   fork it, so it carries over. If you don't, leave it blank — the
-   mission runs in fallback mode and SSH is reported as unverified
-   everywhere. This repository intentionally does not implement
-   automated SSH-session verification; it only tells students where to
-   put the configuration once you build that piece separately.
+3. **Prepare Mission 03 (SSH).** Confirm that the endpoint in
+   `missions/03-ssh/server.env` is reachable and distributes the expected
+   token, then give students the private key through a secure channel.
+   Never commit the key to this repository. Live SSH sessions are not
+   checked automatically, so verify submitted tokens against the server
+   logs when reviewing student work.
 
 4. **Do not commit a solved version of any mission** to the branch
    students fork from. Verify the starter state is genuinely broken

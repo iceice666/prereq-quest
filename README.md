@@ -19,23 +19,11 @@ Start here:
 
 → [`QUEST.md`](QUEST.md)
 
-## Installing Janet
+## Check your environment
 
-Mission 04 runs a small [Janet](https://janet-lang.org/) program. You
-have three options, and any of them is fine:
-
-- **Install it locally** — see the
-  [Janet install docs](https://janet-lang.org/docs/index.html).
-  Package managers carry it too (`brew install janet`,
-  `apt install janet`, `pacman -S janet`, `scoop install janet`,
-  `choco install janet`), and the
-  [releases page](https://github.com/janet-lang/janet/releases) has a
-  Windows installer; versions vary, which doesn't matter for this quest.
-- **Use Docker instead** — Mission 05 builds an image with Janet in it
-  and runs the same `app/main.janet`.
-- **Lean on CI** — push and read the Actions output. Slowest feedback
-  loop of the three, but it works.
-
-`./scripts/doctor.sh` tells you what you currently have.
+Run `./scripts/doctor.sh` before you begin. It reports which tools are
+available and tells you where to find anything you are missing. You need
+Git to complete the quest. Janet and Docker are required only for running
+their missions locally; GitHub Actions runs the full check after you push.
 
 Instructors: see [`INSTRUCTORS.md`](INSTRUCTORS.md).

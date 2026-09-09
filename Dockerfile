@@ -10,26 +10,29 @@
 #   hello, world
 #   42
 
-FROM debian:bookworm-slim
+FROM alpine:3.22 AS builder
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates build-essential \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache ca-certificates curl gcc make musl-dev
 
-# Built from source (rather than a prebuilt release archive) so this
-# works the same on amd64 and arm64 hosts alike. It's a small C program;
-# this takes a few seconds.
+# Build from source so the image works on both amd64 and arm64 hosts.
+# The static musl binary can run in the empty scratch stage below.
 ARG JANET_VERSION=v1.42.0
 RUN curl -fsSL -o /tmp/janet-src.tar.gz \
         "https://github.com/janet-lang/janet/archive/refs/tags/${JANET_VERSION}.tar.gz" \
     && mkdir -p /tmp/janet-src \
     && tar xzf /tmp/janet-src.tar.gz -C /tmp/janet-src --strip-components=1 \
     && make -C /tmp/janet-src -j"$(nproc)" \
-    && make -C /tmp/janet-src install \
-    && rm -rf /tmp/janet-src /tmp/janet-src.tar.gz
+        CFLAGS="-O2 -static" \
+        LDFLAGS="-static" \
+        HAS_SHARED=0 \
+    && strip /tmp/janet-src/build/janet
+
+FROM scratch
+
+COPY --from=builder /tmp/janet-src/build/janet /janet
 
 WORKDIR /quest
 
 COPY app/main.janet /app/main.janet
 
-CMD ["janet", "main.janet"]
+CMD ["/janet", "main.janet"]

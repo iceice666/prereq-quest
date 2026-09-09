@@ -49,11 +49,9 @@ On **Windows**, run this (and everything else here) from **Git Bash**,
 which ships with Git for Windows, or from WSL. These are shell scripts;
 PowerShell and `cmd` can't run them.
 
-Nothing here needs to be installed system-wide except Git. Docker and
-Janet are each used by exactly one mission, and you don't strictly need
-either: see [Installing Janet](README.md#installing-janet) in the root
-README for your options, one of which is letting GitHub Actions run
-things for you.
+Git is the only tool you must install locally. If the doctor reports that
+Janet or Docker is unavailable, complete that mission by inspecting and
+editing the files, then use GitHub Actions to verify it after you push.
 
 ## Mission 00 — Who are you?
 
@@ -91,6 +89,5 @@ you have them installed), but it's the fastest feedback loop you have.
 - If a check is red, the fix is almost always: read the error message
   first.
 - The Actions job summary shows a capability profile, not a score. A
-  `⚪ unverified` result is not a failure. SSH is *always* reported this
-  way: this repository doesn't automate checking a live SSH session, so
-  whether or not a server is configured, that mission is self-reported.
+  `⚪ unverified` result is not a failure. SSH is reported this way because
+  this repository cannot verify the live server session automatically.
