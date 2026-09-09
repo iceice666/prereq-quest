@@ -230,7 +230,7 @@ fi
 # --- Mission 03: SSH -------------------------------------------------------
 SSH_HOST="$(grep '^QUEST_SSH_HOST=' missions/03-ssh/server.env 2>/dev/null | cut -d= -f2-)"
 if [ -z "$SSH_HOST" ]; then
-  skip "ssh: no course server configured (fallback mode, self-reported)"
+  fail "ssh configuration: QUEST_SSH_HOST is missing from missions/03-ssh/server.env"
 else
   skip "ssh: verifying a live session isn't automated by this repository (self-reported)"
 fi

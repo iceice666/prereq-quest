@@ -1,7 +1,7 @@
 # Mission 05 — Docker
 
-The `Dockerfile` at the repository root is broken. `docker build` will
-succeed — the image builds fine — but `docker run` will not behave.
+The root `Dockerfile` builds successfully, but its container cannot find
+the Janet program when it starts. Diagnose and fix the path mismatch.
 
 ## Task
 
@@ -10,34 +10,21 @@ docker build -t prereq-quest .
 docker run --rm prereq-quest
 ```
 
-The container should print exactly:
+The corrected container must print exactly:
 
 ```text
 hello, world
 42
 ```
 
-It won't, at first. Read the error `docker run` gives you, then read the
-`Dockerfile`.
+Read the error from `docker run`, then compare the paths in `WORKDIR`,
+`COPY`, and `CMD`. Change only the path needed to make the program start.
 
-<details><summary>Hint</summary>
+The container runs the file from Mission 04. Complete that mission first
+so the second output line is `42`.
 
-Compare the paths used by `WORKDIR`, `COPY`, and `CMD`.
-
-</details>
-
-The `Dockerfile` bug is independent of Mission 04's, so you can find and
-fix it on its own. But this container runs the same `app/main.janet`
-that Mission 04 asks you to debug, so the output won't be fully correct
-until that one is fixed too — don't be surprised by a `41` if Mission 04
-is still outstanding.
-
-**No Docker on your machine?** Installing it can be a real project of
-its own (Docker Desktop, WSL2, BIOS virtualization, admin rights). If
-that's where you are, fix the `Dockerfile` by reading it, push, and let
-GitHub Actions build and run it for you — the runner already has Docker.
-Say so in your profile. Reasoning your way to the fix is the skill being
-measured here; running it locally is convenience.
+If Docker is unavailable locally, inspect and fix the file, then push and
+use the GitHub Actions result to verify it.
 
 ## Record your answer
 
@@ -48,10 +35,3 @@ What was wrong:
 
 What I changed:
 ```
-
-## What CI checks
-
-- `docker build` succeeds.
-- `docker run --rm prereq-quest` prints exactly `hello, world` then `42`.
-
-No Docker Compose, no multi-container setup — just a build and a run.

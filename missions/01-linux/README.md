@@ -1,8 +1,9 @@
-# Mission 01 — Linux scavenger hunt
+# Mission 01 — Linux
 
-The penguin left something behind. Go find it.
+Use shell commands to find a file and inspect a log. Run every command
+from the repository root.
 
-## Task A — find the file
+## Task A — Find the file
 
 Somewhere under `missions/01-linux/files/` there is a file containing the
 exact string:
@@ -11,8 +12,8 @@ exact string:
 THE_PENGUIN_WAS_HERE
 ```
 
-Find it. There may be files nearby that look similar but are not quite
-right — read before you trust a match.
+Find the file that contains it. Record the file's path relative to the
+repository root.
 
 <details><summary>Hint: useful tools</summary>
 
@@ -20,10 +21,9 @@ right — read before you trust a match.
 
 </details>
 
-## Task B — count the errors
+## Task B — Count the errors
 
-`missions/01-linux/server.log` is a small server log. How many lines
-contain `ERROR`?
+Count the lines in `missions/01-linux/server.log` that contain `ERROR`.
 
 <details><summary>Hint: useful tools</summary>
 
@@ -55,5 +55,10 @@ Command I used:
 - `Path` should be the path to the file you found, relative to the
   repository root.
 - `Count` should be a plain number.
-- CI checks the *answers*, not the exact command you typed — but if you
-  can't explain the command you used, that's worth noticing yourself.
+- `Command I used` should contain the command that produced your answer.
+
+## Verify your work
+
+```console
+./scripts/check.sh
+```

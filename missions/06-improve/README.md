@@ -1,14 +1,12 @@
 # Mission 06 — Improve something
 
-By now you've poked around this repository quite a bit. Something in it
-probably annoyed you: a confusing error message, a typo, an awkward
-script, a README that could be clearer, a missing `.editorconfig`,
-whatever.
+Choose one small improvement based on what you noticed while completing
+the quest.
 
 ## Task
 
-Pick one thing. Improve it. Keep the change small — this is not a
-refactor mission.
+Make one focused change outside your answers file. Keep it small enough
+to explain and review in a few minutes.
 
 Some ideas, none of them required:
 
@@ -18,9 +16,8 @@ Some ideas, none of them required:
 - Improve the CLI output of `app/main.janet` or `scripts/doctor.sh`.
 - Add a bit of input validation somewhere it's obviously missing.
 
-There is no canonical answer to this mission. It exists so your
-instructor can see how you think about a codebase once the assigned
-tasks are done.
+Do not refactor the project or add a new feature. The goal is to leave one
+existing detail clearer, safer, or easier to use.
 
 ## Record your answer
 
@@ -32,7 +29,12 @@ What I changed:
 Why:
 ```
 
-## What CI checks
+## Verify your work
 
-Only that the explanation exists and isn't empty. The judgment call is
-for your instructor, not a script.
+Review the diff before committing:
+
+```console
+git diff
+```
+
+Confirm that the change matches the explanation in your profile.

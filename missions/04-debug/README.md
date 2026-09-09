@@ -1,16 +1,8 @@
-# Mission 04 — Debug an unfamiliar project
+# Mission 04 — Debug unfamiliar code
 
-This is the important one.
-
-`app/main.janet` is a very small program written in
-[Janet](https://janet-lang.org/), a language you have almost certainly
-never used. That's on purpose — this mission isn't testing whether you
-know Janet, it's testing whether you can read a small amount of
-unfamiliar code, run it, and reconcile what it does with what it should
-do.
-
-You do not need a Janet tutorial to do this. You need to run the program,
-read the output, read the ~25 lines of source, and think.
+`app/main.janet` is a small program written in
+[Janet](https://janet-lang.org/). You do not need prior Janet experience.
+Use the output and source code to find the defect.
 
 ## Task
 
@@ -27,27 +19,17 @@ hello, Brian
 42
 ```
 
-You won't, at first. One of the numbers will be wrong. Find out why and
-fix it.
+The starter program prints the wrong number. Fix `app/main.janet` so its
+output matches the example. Do not change `app/test.janet`.
 
-Then run the tests:
-
-```console
-janet app/test.janet
-```
-
-or use the local checker:
+## Verify your work
 
 ```console
 ./scripts/check.sh
 ```
 
-Don't have Janet installed? Run `./scripts/doctor.sh` for install
-guidance, or see the root `README.md` for options. If installing it
-isn't practical for you, push your fix and let GitHub Actions run the
-tests — it installs Janet itself. (Mission 05's container runs this same
-file, but only if you have Docker, so that isn't a way around a missing
-Janet unless you already had Docker anyway.)
+If Janet is unavailable locally, the checker skips this test. Push your
+change and use the GitHub Actions result instead.
 
 ## Record your answer
 
@@ -58,11 +40,3 @@ What was wrong:
 
 What I changed:
 ```
-
-## What CI checks
-
-- `janet app/test.janet` exits successfully.
-
-That's it. The tests are the specification here — don't edit
-`app/test.janet` to make it agree with broken code. If a test looks
-wrong to you, say so in your profile instead of changing it.

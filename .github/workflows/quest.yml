@@ -88,9 +88,8 @@ jobs:
             echo "| SSH | $(emoji_for "$ssh_line") |"
             echo "| Improvement (open-ended) | $(emoji_for "$improve_line") |"
             echo
-            echo "_SSH is always self-reported: this repository does not automate_"
-            echo "_verifying a live SSH session, whether or not a server is configured_"
-            echo "_in \`missions/03-ssh/server.env\`. This is expected, not a bug._"
+            echo "_SSH is self-reported because this repository cannot verify the_"
+            echo "_live server session automatically. An unverified result is expected._"
             echo
             echo "<details><summary>Raw check output</summary>"
             echo
